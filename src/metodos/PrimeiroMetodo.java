@@ -14,14 +14,13 @@ public class PrimeiroMetodo {
 		
 		System.out.println("Escolha dentre os cursos abaixo: ");
 		
-		for(int i = 0; i < cursos.length; i++) {
-			System.out.println("[" + i + "] " + cursos[i]);
-		}
+		iterarEExibirPosicoesVetorString(cursos);
 
 		System.out.print("O curso que você deseja é o: ");
 		Integer posicaoCursoEscolhido = scanner.nextInt();
 		
-		Boolean posicaoValida = posicaoCursoEscolhido >= 0 && posicaoCursoEscolhido < cursos.length; 
+		//Boolean posicaoValida = posicaoCursoEscolhido >= 0 && posicaoCursoEscolhido < cursos.length;
+		Boolean posicaoValida = validarPosicao(posicaoCursoEscolhido, cursos);
 		
 		if (!posicaoValida) {
 			encerrarProgramaPorCausaDePosicaoInvalida();
@@ -33,11 +32,9 @@ public class PrimeiroMetodo {
 		
 		System.out.println("Escolha dentre as formas de pagamento abaixo: ");
 		
-		for(int i = 0; i < formasPagamento.length; i++) {
-			System.out.println("[" + i + "] " + formasPagamento[i]);
-		}
+		iterarEExibirPosicoesVetorString(formasPagamento);
 
-		System.out.print("Sua forma de pagamento escolhida é: ");
+		imprimir("Sua forma de pagamento escolhida é: ");
 		Integer posicaoFormaPagamentoEscolhida = scanner.nextInt();
 		
 		posicaoValida = posicaoFormaPagamentoEscolhida >= 0 
@@ -64,6 +61,20 @@ public class PrimeiroMetodo {
 	static void encerrarProgramaPorCausaDePosicaoInvalida() {
 		System.err.println("Posição inválida!");
 		System.exit(1);
+	}
+	
+	static void imprimir(String texto) {
+		System.out.println(texto);
+	}
+	
+	static void  iterarEExibirPosicoesVetorString(String[] vetor) {
+		for(int i = 0; i < vetor.length; i++) {
+			System.out.println("[" + i + "] " + vetor[i]);
+		}
+	}
+	 static Boolean validarPosicao(Integer posicaoCursoEscolhido, String[] vetor ) {
+		Boolean posicaoValida = posicaoCursoEscolhido >= 0 && posicaoCursoEscolhido < vetor.length;
+		return posicaoValida; 
 	}
 
 }
